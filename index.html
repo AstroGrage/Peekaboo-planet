@@ -10,13 +10,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-    <script src="https://kit.fontawesome.com/a18a5d7723.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/a18a5d7723.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
   <div class="site-header">
-    <div class="top-strip">
+    <div class="top-strip d-none">
       <div class="container d-flex justify-content-between align-items-center py-2 gap-3 flex-wrap">
         <span><i class="fas fa-map-marker-alt me-2"></i>212 Manser Street, Meyerspark, Pretoria</span>
         <span><i class="fas fa-phone-alt me-2"></i><a href="tel:+27825454339">082 545 4339</a></span>
@@ -34,7 +35,7 @@
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
           <div class="navbar-nav mx-auto">
-            <a class="nav-link active" href="index.html">Home</a>
+            <a class="nav-link active" href="#!">Home</a>
             <a class="nav-link" href="about.html">About</a>
             <a class="nav-link" href="program.html">Programs</a>
             <a class="nav-link" href="service.html">Services</a>
@@ -53,7 +54,29 @@
   
   </div>
 
-  <img src="img/Back-to-School.jpg" alt="" style="width: 100%; height: auto; object-fit: cover; margin-top: -80px;">
+  <div id="carouselExampleAutoplaying" style="object-fit: cover; margin-top: -50px;" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="img/Back-to-School.jpg" class="d-block w-100" alt="" >
+    </div>
+    <div class="carousel-item">
+      <img src="img/colorful.jpg" class="d-block w-100" alt="" >
+    </div>
+    <div class="carousel-item">
+      <img src="img/Vetores.jpg" class="d-block w-100" alt="" >
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
 
   <header class="hero-shell" > <!-- style="background-image: url('img/Vetores.jpg');" -->
     <div class="container hero-layout">
@@ -152,7 +175,7 @@
 
         <div class="program-grid">
           <article class="program-card reveal">
-            <div class="program-visual" style="background-image:url('img/Kids_room.jpeg')"></div>
+            <div class="program-visual" style="background-image:url('img/Twinkle-Tots.jpeg')"></div>
             <div class="program-body">
               <span class="pill">Twinkle Tots</span>
               <h3>0–23 months</h3>
@@ -162,7 +185,7 @@
           </article>
 
           <article class="program-card reveal">
-            <div class="program-visual" style="background-image:url('img/room-logo.jpeg')"></div>
+            <div class="program-visual" style="background-image:url('img/Raising-Stars.jpeg')"></div>
             <div class="program-body">
               <span class="pill">Rising Stars</span>
               <h3>2–3 years</h3>
@@ -172,7 +195,7 @@
           </article>
 
           <article class="program-card reveal">
-            <div class="program-visual" style="background-image:url('img/Reception.jpeg')"></div>
+            <div class="program-visual" style="background-image:url('img/Planet-Explorers.jpeg')"></div>
             <div class="program-body">
               <span class="pill">Planet Explorers</span>
               <h3>3–4 years</h3>
@@ -182,7 +205,7 @@
           </article>
 
           <article class="program-card reveal">
-            <div class="program-visual" style="background-image:url('img/School.jpeg')"></div>
+            <div class="program-visual" style="background-image:url('img/little-Astronauts.jpeg')"></div>
             <div class="program-body">
               <span class="pill">Little Astronauts</span>
               <h3>4–5 years</h3>
@@ -192,7 +215,7 @@
           </article>
 
           <article class="program-card reveal">
-            <div class="program-visual" style="background-image:url('img/Entrance.jpeg')"></div>
+            <div class="program-visual" style="background-image:url('img/Galaxy-Graduates.jpeg')"></div>
             <div class="program-body">
               <span class="pill">Galaxy Graduates</span>
               <h3>5–6 years</h3>
@@ -202,7 +225,7 @@
           </article>
 
           <article class="program-card reveal">
-            <div class="program-visual" style="background-image:url('img/School-Gate.jpeg')"></div>
+            <div class="program-visual" style="background-image:url('img/After-Care.png')"></div>
             <div class="program-body">
               <span class="pill">Aftercare</span>
               <h3>Grade R–7</h3>
@@ -353,7 +376,7 @@
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">© 2025 Peekaboo Planet Daycare &amp; Aftercare Centre</div>
+      <div class="footer-bottom">© 2025 Peekaboo Planet Daycare &amp; Aftercare Centre | <span class="d-block d-md-inline ">Designed by <a href="https://igrage.web.app/web-dev.html" target="_blank" rel="noreferrer">iGrage·inc</a></span></div>
     </div>
   </footer>
 
@@ -377,6 +400,7 @@
   </div>
 
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -730,7 +730,7 @@ body { background: #fffdfa; }
 .floating-card { z-index:3; border:1px solid rgba(36,54,75,.08); box-shadow:0 18px 40px rgba(36,54,75,.13); }
 .card-one { left:-7%; top:15%; }
 .card-two { right:-5%; bottom:10%; }
-.section { padding: clamp(4rem,7vw,6.5rem) 0; }
+.section { padding: clamp(2rem,7vw,0.5rem) 0; }
 .intro-section { background: #fff; }
 .mini-badge { letter-spacing:.07em; }
 .feature-card { background: #ffe186; box-shadow:0 12px 34px rgba(36,54,75,.055); }
