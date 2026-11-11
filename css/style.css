@@ -303,7 +303,7 @@ button { font: inherit; }
 .intro-grid,
 .discovery-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; align-items: center; }
 .mini-badge {
-  background: rgba(247, 184, 210, 0.18);
+  background: rgb(247 184 210 / 52%);
   color: var(--pb-pink-strong);
   border: 1px solid rgba(236, 108, 164, 0.12);
 }
@@ -396,7 +396,7 @@ p {
   margin-bottom: 1rem;
   font-size: 1.8rem;
   color: var(--pb-navy);
-  background: linear-gradient(135deg, rgba(154, 225, 246, 0.28), rgba(249, 220, 114, 0.18));
+  background: linear-gradient(135deg, rgb(154 225 246 / 99%), rgb(227 0 255 / 46%));
 }
 .feature-card h3 {
   margin: 0 0 0.7rem;
@@ -733,9 +733,9 @@ body { background: #fffdfa; }
 .section { padding: clamp(2rem,7vw,0.5rem) 0; }
 .intro-section { background: #fff; }
 .mini-badge { letter-spacing:.07em; }
-.feature-card { background: #ffe186; box-shadow:0 12px 34px rgba(36,54,75,.055); }
-.feature-card:nth-child(2) .feature-icon { background:linear-gradient(135deg,#ffe9f1,#f7bfd5); }
-.feature-card:nth-child(3) .feature-icon { background:linear-gradient(135deg,#fff2bd,#ffe27a); }
+.feature-card { background: #ffc720; box-shadow:0 12px 34px rgba(36,54,75,.055); }
+.feature-card:nth-child(2) .feature-icon { background:linear-gradient(135deg,#ff3e85,#f7bfd5); }
+.feature-card:nth-child(3) .feature-icon { background:linear-gradient(135deg,#9efcff,#3633be); }
 .program-card { box-shadow:0 12px 34px rgba(36,54,75,.065); }
 .program-visual { height:230px; transition:transform .45s ease; }
 .program-card:hover .program-visual { transform:scale(1.025); }
@@ -754,7 +754,7 @@ body { background: #fffdfa; }
 .footer { background:#25384d; }
 .reveal { transform:translateY(24px); }
 .team-section { background:#fff; }
-.team-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.15rem; }
+.team-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.15rem; }
 .team-card { min-width:0; overflow:hidden; border-radius:26px; background:#fff; border:1px solid var(--pb-border); box-shadow:0 12px 34px rgba(36,54,75,.07); transition:transform .25s ease,box-shadow .25s ease; }
 .team-card:hover { transform:translateY(-5px); box-shadow:0 22px 42px rgba(36,54,75,.13); }
 .team-card img { width:100%; aspect-ratio: .88; object-fit:cover; object-position:center 30%; background:#eaf9fc; transition:transform .5s ease; }
