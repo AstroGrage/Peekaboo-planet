@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f7f3" />
+    <title>Peekaboo Planet · Daycare desk demo</title>
+    <link href="css/admin.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="side">
+        <div class="brand">
+          <div class="brand-mark">🪐</div>
+          <div class="brand-copy">
+            <strong>Peekaboo Planet</strong><small>Daycare desk · Demo</small>
+          </div>
+        </div>
+        <nav class="nav" aria-label="Main navigation">
+          <button class="active" data-page="overview">
+            <span class="icon">▦</span><span class="label">Overview</span>
+          </button>
+          <button data-page="children">
+            <span class="icon">♧</span><span class="label">Children</span>
+          </button>
+          <button data-page="pickup">
+            <span class="icon">⌑</span><span class="label">Pickup desk</span>
+          </button>
+        </nav>
+        <div class="side-note">
+          <b>Demo data only</b>This preview saves information in this browser.
+          It does not send SMS and is not ready for real child records.
+        </div>
+      </aside>
+      <main class="main">
+        <div class="top">
+          <div class="crumb">
+            Peekaboo Planet <span aria-hidden="true">/</span>
+            <span id="crumb">Overview</span>
+          </div>
+          <div class="today" id="today"></div>
+        </div>
+        <div class="warning">
+          <span>⚠️</span>
+          <div>
+            <b>Prototype for discussion only.</b> Use fictional details here. A
+            live system needs staff sign-in, secure server-side PINs, SMS
+            integration, access controls, backups, and privacy review.
+          </div>
+        </div>
+
+        <section id="overview" class="page">
+          <div class="page-title">
+            <div>
+              <h1>Good morning 👋</h1>
+              <p>Here’s today’s daycare handover overview.</p>
+            </div>
+            <button class="btn" onclick="openChildModal()">
+              ＋ Register child
+            </button>
+          </div>
+          <div class="grid" id="stats"></div>
+          <div class="section-head">
+            <div>
+              <h2>Today’s pickup activity</h2>
+              <p>Recent handovers recorded by staff</p>
+            </div>
+            <button class="btn secondary small" onclick="showPage('pickup')">
+              Open pickup desk →
+            </button>
+          </div>
+          <div class="card">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Child</th>
+                    <th>Pickup person</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="activityRows"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="section-head">
+            <div>
+              <h2>Quick actions</h2>
+              <p>Common tasks for the front desk</p>
+            </div>
+          </div>
+          <div class="workflow">
+            <div class="card">
+              <div class="flow-icon">👶</div>
+              <h3>Update the registry</h3>
+              <p>
+                Add an enrolled child or archive a child who has left. Archived
+                records stay out of the active list.
+              </p>
+            </div>
+            <div class="card">
+              <div class="flow-icon">🔐</div>
+              <h3>Issue a pickup PIN</h3>
+              <p>
+                Generate a daily code for an authorised guardian, then verify
+                and record the handover.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="children" class="page hide">
+          <div class="page-title">
+            <div>
+              <h1>Children</h1>
+              <p>Active registry and authorised pickup contacts.</p>
+            </div>
+            <button class="btn" onclick="openChildModal()">
+              ＋ Register child
+            </button>
+          </div>
+          <div class="card">
+            <div class="toolbar">
+              <div class="search">
+                <input
+                  id="childSearch"
+                  placeholder="Search child or guardian…"
+                  oninput="renderChildren()"
+                  aria-label="Search children"
+                />
+              </div>
+              <button
+                class="btn secondary small"
+                id="archivedToggle"
+                onclick="toggleArchived()"
+              >
+                Show archived
+              </button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Child</th>
+                    <th>Guardian</th>
+                    <th>Mobile</th>
+                    <th>Approved pickup adults</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="childRows"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="pickup" class="page hide">
+          <div class="page-title">
+            <div>
+              <h1>Pickup desk</h1>
+              <p>Issue a one-day demo PIN and record a verified handover.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="toolbar">
+              <div class="search">
+                <input
+                  id="pickupSearch"
+                  placeholder="Find a child…"
+                  oninput="renderPickup()"
+                  aria-label="Search pickup list"
+                />
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Child</th>
+                    <th>Guardian</th>
+                    <th>Pickup adults</th>
+                    <th>PIN status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="pickupRows"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="section-head">
+            <div>
+              <h2>Verify a PIN</h2>
+              <p>
+                Confirm the pickup adult is authorised and check their identity
+                before releasing a child.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <form id="verifyForm" novalidate>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="verifyPin">6-digit pickup PIN</label
+                  ><input
+                    id="verifyPin"
+                    inputmode="numeric"
+                    maxlength="6"
+                    pattern="[0-9]{6}"
+                    placeholder="Enter code"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="verifyAdult">Pickup adult’s full name</label
+                  ><input
+                    id="verifyAdult"
+                    placeholder="Match registry spelling"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="modal-actions">
+                <button class="btn" type="submit">
+                  Verify and record handover
+                </button>
+              </div>
+            </form>
+            <div class="help">
+              Demo verifies a code created in this browser only. A real
+              implementation must verify codes on a secure server.
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-back" id="childModal">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <h2 id="modalTitle">Register a child</h2>
+        <p class="sub">
+          Add a child and the guardian who can receive pickup codes.
+        </p>
+        <form id="childForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="childName">Child’s name *</label
+              ><input id="childName" required autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="groupName">Class / group</label
+              ><input id="groupName" placeholder="e.g. Sunbeams" />
+            </div>
+            <div class="field">
+              <label for="guardianName">Parent / guardian *</label
+              ><input id="guardianName" required autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="guardianPhone">Guardian mobile *</label
+              ><input
+                id="guardianPhone"
+                type="tel"
+                placeholder="+27…"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <div class="field full">
+              <label for="pickupNames">Approved pickup adults *</label
+              ><input
+                id="pickupNames"
+                placeholder="Separate names with commas"
+                required
+                autocomplete="off"
+              /><span class="help"
+                >Only add adults approved by the parent/guardian.</span
+              >
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button
+              type="button"
+              class="btn secondary"
+              onclick="closeChildModal()"
+            >
+              Cancel</button
+            ><button class="btn" type="submit">Save child</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-back" id="pinModal">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="pinTitle"
+      >
+        <h2 id="pinTitle">Pickup PIN created</h2>
+        <p class="sub" id="pinDescription"></p>
+        <div class="pin" id="pinValue"></div>
+        <div class="pin-note">
+          Demo only · SMS was not sent · Expires today · Single use
+        </div>
+        <div class="alert">
+          Before releasing a child, verify the adult is on the approved pickup
+          list and check their identity. The code alone is not proof of
+          identity.
+        </div>
+        <div class="modal-actions">
+          <button class="btn" onclick="closePinModal()">Done</button>
+        </div>
+      </div>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+
+    <script>
+      const script = document.createElement("script");
+      script.src = "js/admin.js";
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
